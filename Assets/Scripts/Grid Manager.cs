@@ -64,7 +64,7 @@ public class Grid_Manager : MonoBehaviour
         float xPos = x * tileSize + tileSize / 2;
         float yPos = y * tileSize + tileSize / 2;
 
-        return new Vector2(xPos - (height / 2), yPos - (width / 2));
+        return new Vector2(xPos - (height / 2), yPos - (width / 2) - 1);
     }
 
     public int GetBombCountAroundCoord(int x, int y)
