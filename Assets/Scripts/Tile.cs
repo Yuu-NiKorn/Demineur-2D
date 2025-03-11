@@ -74,24 +74,29 @@ public class Tile : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            isFlagged = !isFlagged;
-            if (isFlagged)
+            if (isFlagged == false)
             {
                 spriteRenderer.sprite = sprites[11];
+                isFlagged = true;
             }
             else
             {
+                if (!isClicked)
+                {
+                    spriteRenderer.sprite = sprites[0];
+                }
                 RefreshVisual();
+                isFlagged = false;
             }
         }
     }
 
     void OnMouseDown()
     {
+        if (isFlagged) return;
         Debug.Log(grid_Manager.GetBombCountAroundCoord(x, y), gameObject);
         isClicked = true;
         if (!Game) return;
-        if (isFlagged) return;
         if (isBomb)
         {
             Game = false;
