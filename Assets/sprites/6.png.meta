@@ -51,7 +51,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream:Assets/sprites/6.png.meta
   spritePixelsToUnits: 700
+=======
+  spritePixelsToUnits: 750
+>>>>>>> Stashed changes:Assets/sprites/CAT1 copie.jpg.meta
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +76,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -135,7 +139,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< Updated upstream:Assets/sprites/6.png.meta
       6_0: 3465286685962602723
+=======
+      CAT1 copie_0: 9188295461880805471
+>>>>>>> Stashed changes:Assets/sprites/CAT1 copie.jpg.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
