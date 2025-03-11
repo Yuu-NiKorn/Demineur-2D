@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -13,15 +14,10 @@ public class Tile : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
-/*
-    [SerializeField, Space]
-    private GameObject numberPrefabs;
-    [SerializeField]
-    private GameObject bombPrefab, redFlagPrefab;
-    */
     
     public bool Game = true;
     private bool isClicked = false;
+    private bool isFlagged = false;
     [SerializeField] private Sprite[] sprites;
     public int spriteIndex = 0;
 
@@ -32,7 +28,6 @@ public class Tile : MonoBehaviour
         {
             if (Game == false)
             {
-                //spriteRenderer.color = Color.magenta;
                 spriteRenderer.sprite = sprites[1];
             }
         }
@@ -41,7 +36,6 @@ public class Tile : MonoBehaviour
             if (isClicked)
             {
                 spriteIndex = grid_Manager.GetBombCountAroundCoord(x, y) + 2;
-                //spriteRenderer.color = Color.blue;
                 switch (spriteIndex)
                 {
                     case 2:
@@ -76,11 +70,28 @@ public class Tile : MonoBehaviour
         }
     }
 
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            isFlagged = !isFlagged;
+            if (isFlagged)
+            {
+                spriteRenderer.sprite = sprites[11];
+            }
+            else
+            {
+                RefreshVisual();
+            }
+        }
+    }
+
     void OnMouseDown()
     {
         Debug.Log(grid_Manager.GetBombCountAroundCoord(x, y), gameObject);
         isClicked = true;
         if (!Game) return;
+        if (isFlagged) return;
         if (isBomb)
         {
             Game = false;
@@ -96,11 +107,6 @@ public class Tile : MonoBehaviour
     {
         Debug.Log(this + " is screaming !!!");
     }
-
-    //void OAsButton()
-    //{
-    //    Debug.Log(Grid_Manager.RedFlag);
-    //}
 }
 
 
