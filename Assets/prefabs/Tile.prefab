@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7109437469293727045, guid: 257da5e2e31e8f24e8d01a906ee75be8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_Size: {x: 6.36, y: 6.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &4019877025547998183
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.36, y: 6.36}
+    oldSize: {x: 0.9085714, y: 0.9085714}
     newSize: {x: 6.36, y: 6.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -157,6 +157,8 @@ MonoBehaviour:
   redFlagPrefab: {fileID: 0}
   Game: 1
   sprites:
+  - {fileID: 7109437469293727045, guid: 257da5e2e31e8f24e8d01a906ee75be8, type: 3}
+  - {fileID: 1135352082638497076, guid: 76c7758954dcfd44ea800b934587674a, type: 3}
   - {fileID: 1052088411989569406, guid: f508d5e6c6f6c3e43b110c047c3ef9ed, type: 3}
   - {fileID: 9188295461880805471, guid: 0d9de1d6b596bcb44b22fe7ba94b0387, type: 3}
   - {fileID: 6332594328194756904, guid: c3e9ae608c8023d45ac68f513d77f636, type: 3}
@@ -166,6 +168,5 @@ MonoBehaviour:
   - {fileID: 1436541585611798847, guid: 859ab73b5c549254fa6951e520275805, type: 3}
   - {fileID: -252877177170529658, guid: bf76d541f9fd5164e8cb8112a95888f4, type: 3}
   - {fileID: 1089297401146820805, guid: 28e5893e32703d84c95a4ab1d588e201, type: 3}
-  - {fileID: 1135352082638497076, guid: 76c7758954dcfd44ea800b934587674a, type: 3}
-  - {fileID: 7109437469293727045, guid: 257da5e2e31e8f24e8d01a906ee75be8, type: 3}
+  - {fileID: -4313203998262663933, guid: 1e5182165837df44d9be1857e7775da7, type: 3}
   spriteIndex: 0
