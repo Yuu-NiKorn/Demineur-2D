@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -14,15 +13,14 @@ public class Tile : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
-    //[SerializeField, Space]
-    //private GameObject numberPrefabs;
+    [SerializeField, Space]
+    private GameObject numberPrefabs;
     [SerializeField]
     private GameObject bombPrefab, redFlagPrefab;
     public bool Game = true;
     private bool isClicked = false;
     [SerializeField] private Sprite[] sprites;
     public int spriteIndex = 0;
-    private bool isFlagged;
 
 
     public void RefreshVisual()
@@ -31,6 +29,7 @@ public class Tile : MonoBehaviour
         {
             if (Game == false)
             {
+                //spriteRenderer.color = Color.magenta;
                 spriteRenderer.sprite = sprites[1];
             }
         }
@@ -69,30 +68,6 @@ public class Tile : MonoBehaviour
                     case 10:
                         spriteRenderer.sprite = sprites[spriteIndex];
                         break;
-                    default:
-                        spriteRenderer.sprite = sprites[0];
-                        break;
-                }
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (Game)
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                if (isFlagged)
-                {
-                    spriteRenderer.sprite = sprites[0];
-                    isFlagged = false;
-
-                }
-                else
-                {
-                    spriteRenderer.sprite = sprites[11];
-                    isFlagged = true;
                 }
             }
         }
@@ -100,22 +75,16 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (Game)
+        Debug.Log(grid_Manager.GetBombCountAroundCoord(x, y), gameObject);
+        isClicked = true;
+        if (isBomb)
         {
-            if (!isFlagged)
-            {
-                Debug.Log(grid_Manager.GetBombCountAroundCoord(x, y), gameObject);
-                isClicked = true;
-                if (isBomb)
-                {
-                    Game = false;
-                    grid_Manager.GameOver();
-                }
-                else
-                {
-                    RefreshVisual();
-                }
-            }
+            Game = false;
+            grid_Manager.GameOver();
+        }
+        else
+        {
+            RefreshVisual();
         }
     }
 
