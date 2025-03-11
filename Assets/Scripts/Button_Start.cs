@@ -22,7 +22,7 @@ public class Button_Start : MonoBehaviour
         if (button_start != null)
         {
             button_start.onClick.AddListener(LoadScene);
-            Debug.Log("GLORIOUS EVOLUTION HAHAHAHA");
+            Debug.Log(" THE GLORIOUS EVOLUTION HAHAHAHA");
         }
     }
 }
