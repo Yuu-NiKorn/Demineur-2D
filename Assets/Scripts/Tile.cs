@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -12,11 +13,13 @@ public class Tile : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
-
+/*
     [SerializeField, Space]
     private GameObject numberPrefabs;
     [SerializeField]
     private GameObject bombPrefab, redFlagPrefab;
+    */
+    
     public bool Game = true;
     private bool isClicked = false;
     [SerializeField] private Sprite[] sprites;
@@ -77,6 +80,7 @@ public class Tile : MonoBehaviour
     {
         Debug.Log(grid_Manager.GetBombCountAroundCoord(x, y), gameObject);
         isClicked = true;
+        if (!Game) return;
         if (isBomb)
         {
             Game = false;
