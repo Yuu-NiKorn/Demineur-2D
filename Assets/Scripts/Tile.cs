@@ -29,6 +29,7 @@ public class Tile : MonoBehaviour
             if (game == false)
             {
                 spriteRenderer.sprite = sprites[1];
+                SFX(3);
             }
         }
         else
@@ -78,6 +79,7 @@ public class Tile : MonoBehaviour
             {
                 spriteRenderer.sprite = sprites[11];
                 isFlagged = true;
+                SFX(2);
             }
             else
             {
@@ -94,8 +96,13 @@ public class Tile : MonoBehaviour
     void OnMouseDown()
     {
         RecursiveClear();
+        SFX(1);
     }
 
+    private void SFX(int index)
+    {
+        gridManager.musicManager.PlaySFX(index);
+    }
     private void TileClick()
     {
         if (isFlagged) return;

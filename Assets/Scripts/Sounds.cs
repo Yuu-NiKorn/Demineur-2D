@@ -7,15 +7,10 @@ public class Sounds : MonoBehaviour
 
 
     [Header("Audio Clip")]
-    public AudioClip flag;
-    public AudioClip bomb;
-    public AudioClip tile;
-    public AudioClip gameover;
-    public AudioClip start;
-
-
-    public void PlaySFX(AudioClip clip)
+    public AudioClip[] audioList;
+    
+    public void PlaySFX(int index)
     {
-        SFXSource.PlayOneShot(clip);
+        SFXSource.PlayOneShot(audioList[index]);
     }
 }

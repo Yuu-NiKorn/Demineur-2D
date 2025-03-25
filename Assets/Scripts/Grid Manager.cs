@@ -30,10 +30,8 @@ public class Grid_Manager : MonoBehaviour
 
     private void Awake()
     {
-
+        musicManager.PlaySFX(0);
         GenerateBoard();
-        // musicManager = GameObject.FindGameObjectsWithTag("Audio").GetComponent<Sounds>();
-
     }
 
     // private void OnGUI()
@@ -101,6 +99,7 @@ public class Grid_Manager : MonoBehaviour
                 currentTile = Tiles[i, j];
                 currentTile.game = false;
                 currentTile.RefreshVisual();
+                musicManager.PlaySFX(4);
             }
         }
     }
