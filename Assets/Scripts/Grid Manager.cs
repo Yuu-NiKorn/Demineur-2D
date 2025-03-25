@@ -9,16 +9,16 @@ public class Grid_Manager : MonoBehaviour
     [SerializeField, Range(0, 1)]
     private float bombProbability;
     [SerializeField]
-    private int width;
+    public int width;
 
     [SerializeField]
-    private int height;
+    public int height;
 
     [SerializeField]
     private float tileSize;
 
     [SerializeField]
-    private Tile[,] tiles;
+    public Tile[,] Tiles;
 
     [SerializeField]
     private Tile tilePrefab;
@@ -38,7 +38,7 @@ public class Grid_Manager : MonoBehaviour
 
     private void GenerateBoard()
     {
-        tiles = new Tile[width, height];
+        Tiles = new Tile[width, height];
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -49,11 +49,11 @@ public class Grid_Manager : MonoBehaviour
                 tile.x = i;
                 tile.y = j;
                 tile.isBomb = isBomb;
-                tile.grid_Manager = this;
+                tile.gridManager = this;
 
                 tile.RefreshVisual();
 
-                tiles[i, j] = tile;
+                Tiles[i, j] = tile;
             }
         }
     }
@@ -79,7 +79,7 @@ public class Grid_Manager : MonoBehaviour
                     if (j >= 0 && j < height)
                     {
                         bool isOrigin = i == x && j == y;
-                        if (tiles[i, j].isBomb && !isOrigin)
+                        if (Tiles[i, j].isBomb && !isOrigin)
                             count++;
                     }
                 }
@@ -96,8 +96,8 @@ public class Grid_Manager : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                currentTile = tiles[i, j];
-                currentTile.Game = false;
+                currentTile = Tiles[i, j];
+                currentTile.game = false;
                 currentTile.RefreshVisual();
             }
         }

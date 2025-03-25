@@ -1,32 +1,32 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
-[System.Serializable]
+
 public class Tile : MonoBehaviour
 {
     public bool isBomb;
-    [HideInInspector]
-    public Grid_Manager grid_Manager;
+    public Grid_Manager gridManager;
     public int x;
     public int y;
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     
-    public bool Game = true;
-    private bool isClicked = false;
-    private bool isFlagged = false;
+    public bool game = true;
+    private bool isClicked;
+    private bool isFlagged;
     [SerializeField] private Sprite[] sprites;
-    public int spriteIndex = 0;
+    public int spriteIndex;
 
 
     public void RefreshVisual()
     {
         if (isBomb)
         {
-            if (Game == false)
+            if (game == false)
             {
                 spriteRenderer.sprite = sprites[1];
             }
@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour
         {
             if (isClicked)
             {
-                spriteIndex = grid_Manager.GetBombCountAroundCoord(x, y) + 2;
+                spriteIndex = gridManager.GetBombCountAroundCoord(x, y) + 2;
                 switch (spriteIndex)
                 {
                     case 2:
@@ -93,20 +93,55 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
+        RecursiveClear();
+    }
+
+    private void TileClick()
+    {
         if (isFlagged) return;
-        Debug.Log(grid_Manager.GetBombCountAroundCoord(x, y), gameObject);
+        Debug.Log(gridManager.GetBombCountAroundCoord(x, y), gameObject);
         isClicked = true;
-        if (!Game) return;
+        if (!game) return;
         if (isBomb)
         {
-            Game = false;
-            grid_Manager.GameOver();
+            game = false;
+            gridManager.GameOver();
         }
         else
         {
             RefreshVisual();
         }
     }
+
+    private void RecursiveClear()
+    {
+        if (isClicked) return;
+        TileClick();
+        if (gridManager.GetBombCountAroundCoord(x, y) > 0) return;
+        
+        int[][] directions = 
+        {
+            new[] {-1, -1}, new[] {-1, 0}, new[] {-1, 1},
+            new[] { 0, -1},                  new[] { 0, 1},
+            new[] { 1, -1}, new[] { 1, 0}, new[] { 1, 1}
+        };
+
+        foreach (var dir in directions)
+        {
+            int newX = x + dir[0];
+            int newY = y + dir[1];
+
+            // Check if the new coordinates are within bounds
+            if (newX >= 0 && newX < gridManager.width &&
+                newY >= 0 && newY < gridManager.height)
+            {
+                Tile neighbor = gridManager.Tiles[newX, newY];
+                
+                neighbor.RecursiveClear();
+            }
+        }
+    }
+
 
     public void Scream()
     {
