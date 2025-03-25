@@ -26,11 +26,13 @@ public class Grid_Manager : MonoBehaviour
     [SerializeField]
     private Tile RedFlag;
 
+    public Sounds musicManager;
 
     private void Awake()
     {
 
         GenerateBoard();
+        // musicManager = GameObject.FindGameObjectsWithTag("Audio").GetComponent<Sounds>();
 
     }
 
