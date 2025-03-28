@@ -31,7 +31,6 @@ public class Grid_Manager : MonoBehaviour
     private void Awake()
     {
         musicManager.PlaySFX(0);
-
         GenerateBoard();
     }
 
